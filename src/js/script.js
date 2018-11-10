@@ -68,7 +68,7 @@ jQuery(function($) {
 	function grid() {
 		$('.post-list .post .post-image img').each(function() {
 			var img = $(this);
-			img.load(function() {
+			img.on('load', function() {
 				img.parents('.post-image').css({
 					'height' : '0',
 					'padding-bottom' : 100 / img.width() * img.height() + '%'
@@ -104,6 +104,22 @@ jQuery(function($) {
 		});
 	}
 	highlight();
+
+	/* ==========================================================================
+	   Gallery
+	   ========================================================================== */
+
+	function gallery() {
+		var images = document.querySelectorAll('.kg-gallery-image img');
+		images.forEach(function (image) {
+			var container = image.closest('.kg-gallery-image');
+			var width = image.attributes.width.value;
+			var height = image.attributes.height.value;
+			var ratio = width / height;
+			container.style.flex = ratio + ' 1 0%';
+		});
+	}
+	gallery();
 
 	/* ==========================================================================
 	   Fitvids
@@ -152,6 +168,7 @@ jQuery(function($) {
 		grid();
 		ajaxLinkClass();
 		highlight();
+		gallery();
 		video();
 		comments();
 		currentMenuFix();
