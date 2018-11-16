@@ -154,7 +154,12 @@ jQuery(function($) {
 				type: "GET",
 				url: "//" + disqus + ".disqus.com/embed.js",
 				dataType: "script",
-				cache: true
+				cache: true,
+				success: function () {
+					$('#disqus_loading').css({
+						'display' : 'none'
+					})
+				}
 			});
 		}
 	}
