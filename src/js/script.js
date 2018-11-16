@@ -141,6 +141,9 @@ jQuery(function($) {
 			});
 		} else {
 			if (window.DISQUS) {
+				$('#disqus_loading').css({
+					'display' : 'none'
+				});
 				return DISQUS.reset({
 					reload: true,
 					config: function () {
@@ -154,12 +157,7 @@ jQuery(function($) {
 				type: "GET",
 				url: "//" + disqus + ".disqus.com/embed.js",
 				dataType: "script",
-				cache: true,
-				success: function () {
-					$('#disqus_loading').css({
-						'display' : 'none'
-					})
-				}
+				cache: true
 			});
 		}
 	}
